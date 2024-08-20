@@ -1,0 +1,2 @@
+bergmal = input("")
+print(bergmal)

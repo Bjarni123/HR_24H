@@ -1,7 +1,4 @@
-def is_valid_name(name):
-    for x in name:
-        if (x.isalpha() or x.isspace()) == False:
-            return False
-    return True
+year = 1990
 
-print(is_valid_name("Bjarni "))
+print(year, "is a leap year. That statement is ", end="")
+print("False")

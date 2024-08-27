@@ -1,4 +1,7 @@
-year = 1990
+import time
+import sys
 
-print(year, "is a leap year. That statement is ", end="")
-print("False")
+for i in range(5):
+    print(i),
+    #sys.stdout.flush()
+    time.sleep(1)

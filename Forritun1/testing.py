@@ -1,7 +1,2 @@
-import time
-import sys
-
-for i in range(5):
-    print(i),
-    #sys.stdout.flush()
-    time.sleep(1)
+for x in range(10, 10):
+    print('damn')

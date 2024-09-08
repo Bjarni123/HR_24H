@@ -1,2 +1,7 @@
-for x in range(10, 10):
-    print('damn')
+import sys
+
+sum = 0
+for line in sys.stdin:
+    sum += int(line)
+
+print(sum)

@@ -10,26 +10,25 @@ asciidifference = ord(line1[0]) - ord('H')
 fullsentence = ''
 
 for x in line1:
-    charasciivalue = (ord(x) - asciidifference - 32) % 94 + 32
-    print(charasciivalue)
+    charasciivalue = (ord(x) - asciidifference - 32) % 96 + 32
     fullsentence += chr(charasciivalue)
 
 fullsentence += '\n'
 
 for x in line2:
-    charasciivalue = (ord(x) - asciidifference - 32) % 94 + 32
+    charasciivalue = (ord(x) - asciidifference - 32) % 96 + 32
     fullsentence += chr(ord(x) - asciidifference)
 
 fullsentence += '\n'
 
 for x in line3:
-    charasciivalue = (ord(x) - asciidifference - 32) % 94 + 32
+    charasciivalue = (ord(x) - asciidifference - 32) % 96 + 32
     fullsentence += chr(ord(x) - asciidifference)
 
 fullsentence += '\n'
 
 for x in line4:
-    charasciivalue = (ord(x) - asciidifference - 32) % 94 + 32
+    charasciivalue = (ord(x) - asciidifference - 32) % 96 + 32
     fullsentence += chr(ord(x) - asciidifference)
 
 print(fullsentence)

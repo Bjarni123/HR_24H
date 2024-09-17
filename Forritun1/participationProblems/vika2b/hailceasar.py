@@ -4,31 +4,14 @@ line3 = input()
 line4 = input()
 
 asciidifference = ord(line1[0]) - ord('H')
-
+numbers = []
 
 
 fullsentence = ''
 
-for x in line1:
-    charasciivalue = (ord(x) - asciidifference - 32) % 96 + 32
-    fullsentence += chr(charasciivalue)
-
-fullsentence += '\n'
-
-for x in line2:
-    charasciivalue = (ord(x) - asciidifference - 32) % 96 + 32
-    fullsentence += chr(ord(x) - asciidifference)
-
-fullsentence += '\n'
-
-for x in line3:
-    charasciivalue = (ord(x) - asciidifference - 32) % 96 + 32
-    fullsentence += chr(ord(x) - asciidifference)
-
-fullsentence += '\n'
-
-for x in line4:
-    charasciivalue = (ord(x) - asciidifference - 32) % 96 + 32
-    fullsentence += chr(ord(x) - asciidifference)
-
-print(fullsentence)
+for line in [line1, line2, line3, line4]:
+    for x in line:
+        charasciivalue = (ord(x) - asciidifference - 32) % 95 + 32
+        numbers.append(charasciivalue)
+        print(chr(charasciivalue),end='')
+    print()

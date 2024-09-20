@@ -14,9 +14,11 @@ tileMap = {
 location = 11
 
 while location != 31:
+
+    # find available directions
     availableDir = tileMap[location]
     directions = ''
-    print('You can travel: ', end='')
+    
     if 'n' in availableDir:
         directions += '(N)orth '
     if 'e' in availableDir:
@@ -26,9 +28,13 @@ while location != 31:
     if 'w' in availableDir:
         directions+= '(W)est '
 
+    # print available directions 
+    print('You can travel: ', end='')
     directions = directions[:-1]
     directions = directions.replace(' ', ' or ')
     print(directions + '.')
+
+    #see if desire direction is avaiable and go that direction if available.
     desiredDirection = input('Direction: ').lower()
     if desiredDirection in availableDir:
         if desiredDirection == 'n':

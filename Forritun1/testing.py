@@ -1,1 +1,1 @@
-print(-1 % 5)
+input().split().sort()

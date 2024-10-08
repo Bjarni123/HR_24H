@@ -9,7 +9,6 @@ def main():
     state_music_opinion(music, group, singer)
     print()
     state_music_opinion()
-    state_music_opinion("", "bjarni", "")
 
 def state_music_opinion(genre = None, music_group = None, vocalist = None):
     if genre == None or len(genre) == 0:

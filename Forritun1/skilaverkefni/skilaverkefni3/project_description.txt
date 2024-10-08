@@ -1,0 +1,62 @@
+Orðalisti
+
+Skrifið forrit sem les t    extaskrá með einu orði í sérhverri línu inn í lista og leyfir notandanum endurtekið að framkvæma
+eftirfarandi aðgerðir:
+    • l/<line_number>: Prentar út orðið í línu nr. <line_number>.
+    • s/<search_str>: Prentar út öll orð sem byrja á <search_str>.
+    • a/<word>: Bætir orðinu <word> við orðalistann.
+    • w: Skrifar (mögulega breyttan) orðalista aftur út í skrána.
+    • q: Hættir keyrslu.
+
+Dæmi um aðgerðir:
+    • l/10: Prentar út orðið í línu 10.
+    • a/programming: Bætir orðinu “programming” við orðalistann.
+    • s/pro: Prentar út öll orð sem byrja á “pro”.
+
+Útfærsla:
+    • Ef skráarnafnið, sem notandinn slær inn, finnst ekki þá skal skrifa út villuskilaboðin „File not found!“. Forritið hættir síðan keyrslu.
+    • Ef viðfangið með línuskipuninni (l) er hvorki tala né á réttu bili þá skal skrifa út villuskilaboðin „Invalid line number!“.
+    • Ef óleyfileg skipun er slegin inn (þ.e. eitthvað annað en l, s, a, w, eða q) eða leyfileg skipun með rangt viðfang, þá skal forritið 
+        einfaldlega spyrja notandann aftur um næstu aðgerð.
+    • Þegar orðalistinn er skrifaður aftur út í skrána þá getið þið notað seek fallið (eða eitthvað svipað) til að færa stöðuna á 
+        skráarbendinum í upphaf skrárinnar. Passaðu einnig að sturta straumnum þannig breytingarnar fara strax í skránna. 
+        Aukalega skal forritið skrifa út „File written!“ eftir að hafa klárað að skrifa í skránna.
+    • Gera má ráð fyrir að einungis enskir lágstafir verði notaðir í orð sem eru viðfang a skipanar.
+    • Stafirnir í inntakinu eru ýmist enskir stafir, tölustafir, eða táknin „+-,./“ (eða nýlínutákn).
+    • Hver einasta skipun verður gefin með 0 eða 1 viðfangi
+    • Eins og ávallt þá er mikilvægt í þessu verkefni að bera kennsl á hlutverkefni og útfæra föll fyrir þau.
+
+Sjá skránna test.txt sem er hengd við til að skilja sýnidæmin.
+Eftir keyrsluna á sýnidæmi 3 myndi innihald test.txt vera eftirfarandi:
+
+
+Read Sample Interaction 1 Write
+
+    Enter filename:         bla.txt                 
+    File not found!
+
+Read Sample Interaction 2 Write
+
+    Enter filename:         test.txt                
+    Enter action:           q
+
+Read Sample Interaction 3 Write
+
+    Enter filename:         test.txt
+    Enter action:           l/ab
+    Invalid line number!
+    Enter action:           l/50
+    Invalid line number!
+    Enter action:           l/5
+    above
+    Enter action:           s
+    Enter action:           s/acc
+    accept
+    according
+    account
+    Enter action:           a
+    Enter action:           a/programming
+    Enter action:           a/fun
+    Enter action:           w
+    File written!
+    Enter action:           q   

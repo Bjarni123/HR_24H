@@ -1,5 +1,6 @@
 
 % Gögn úr töflunni
+
 x = sort([13, 15, 14.5, 18.6, 16.2, 16.5, 17.2, 13.5, 15.5, 18.1]); % Lengd gormsins x [cm]
 
 F = sort([5.587, 6.215, 9.303, 9.484, 5.653, 5.935, 8.641, 3.409, 8.69, 6.983]); % Kraftur F [N]
@@ -7,6 +8,7 @@ F = sort([5.587, 6.215, 9.303, 9.484, 5.653, 5.935, 8.641, 3.409, 8.69, 6.983]);
 
 figure;
 plot(x, F, 'o'); % Gögnin teiknuð með punktum og línu
+title("Tilraun 1")
 xlabel('Lengd gormsins [cm]');
 ylabel('Kraftur [N]');
 grid on;

@@ -7,6 +7,7 @@ x = sort([17.2, 15, 17.9, 20.9, 19, 19.5, 16.3, 21.5, 21.5, 17.8]); % x [m]
 
 figure;
 plot(x, F, 'o'); % Gögnin teiknuð með punktum og línu
+title("Tilraun 2")
 xlabel('Lengd gormsins [cm]');
 ylabel('Kraftur [N]');
 grid on;

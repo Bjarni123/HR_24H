@@ -1,1 +1,3 @@
-print('Bjarni'.ljust(6), 'Bjarni'.rjust(24))
+thingy = {1:1, 2:2, 3:[1,2,3]}
+
+print(thingy)

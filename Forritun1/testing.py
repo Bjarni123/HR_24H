@@ -1,1 +1,1 @@
-print('Bjarni'.ljust(6), 'Bjarni'.rjust(24))
+print("Viktor".split())

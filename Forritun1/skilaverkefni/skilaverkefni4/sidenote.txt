@@ -19,7 +19,7 @@
         'C': 'Vidreisn', 
         'M': 'Midflokkurinn', 
         'J': 'Sosialistaflokkur Islands'
-        }, 
+    }, 
 'Results': 
     {
         'Reykjavik sudur': [('D', '8809'), ('V', '5212'), ('S', '4720'), ('B', '4077'), ('P', '3875'), ('F', '3169'), ('C', '3067'), ('J', '1691'), ('M', '1456')], 

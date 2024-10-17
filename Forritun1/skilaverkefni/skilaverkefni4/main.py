@@ -127,10 +127,27 @@ def create_collection(constituencies_data, parties_data, results_data):
     return the_collection
 
 def collection_table(the_constituencies, the_parties, the_results):
-        
+    table = []
+    table = add_list_and_party_collumn(the_parties)
 
 
     return
+
+def add_list_and_party_collumn(the_parties):
+    """Takes the parties dictionary and puts them into 2 different columns for table"""
+    list_column = []
+    party_column = []
+    
+    for party_letter, party_name in the_parties.items():
+        list_column.append(party_letter)
+        party_column.append(party_name)
+
+    
+    the_columns = [{"Party": list_column}, {"List": party_column}]
+
+    return the_columns
+
+
 
 
 

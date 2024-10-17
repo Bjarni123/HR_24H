@@ -20,7 +20,8 @@ Endurtaka ekki (nánast) sama kóða.  Frekar kalla oftar en einu sinni á fall 
 '''
 # Constants ----------------------------------------------------------------------------------------------------------------------------
 
-FILES_LOCATION = './Forritun1/skilaverkefni/skilaverkefni4/src/'
+FILES_LOCATION = './skilaverkefni/skilaverkefni4/src/' 
+#                './src/'
 
 # Classes ------------------------------------------------------------------------------------------------------------------------------
 
@@ -57,14 +58,22 @@ def load_results_if_empty(the_results):
             with open(FILES_LOCATION + filename, 'r') as file:
                 last_key = ''
                 for line in file:
-                    print(line)
+
+                    if not line:
+                        continue
+
+
+                    line_stripped = line.strip()
                     try:
-                        list, party = line.split(';')
-                        file_content[last_key].append(set(list, party))
+                        the_list, party = line_stripped.split(';')
+                        the_set = (the_list, party)
+                        file_content[last_key].append(the_set)
                     except:
-                        line = line.strip()
-                        file_content[line] = list()
-                        last_key = line
+                        file_content[line_stripped] = list()
+                        last_key = line_stripped
+            
+            return file_content
+
         except:
             return None
 
@@ -109,40 +118,77 @@ def get_value_sum(data):
 
     return the_sum
 
+def create_collection(constituencies_data, parties_data, results_data):
+    the_collection = {}
+    the_collection["Constituencies"] = constituencies_data
+    the_collection["Parties"] = parties_data
+    the_collection["Results"] = results_data
+
+    return the_collection
+
+def collection_table(the_constituencies, the_parties, the_results):
+    table = []
+    table = add_list_and_party_collumn(the_parties)
+
+
+    return
+
+def add_list_and_party_collumn(the_parties):
+    """Takes the parties dictionary and puts them into 2 different columns for table"""
+    list_column = []
+    party_column = []
+    
+    for party_letter, party_name in the_parties.items():
+        list_column.append(party_letter)
+        party_column.append(party_name)
+
+    
+    the_columns = [{"Party": list_column}, {"List": party_column}]
+
+    return the_columns
+
+
+
+
+
 # Main ------------------------------------------------------------------------------------------------------------------------------------
 
 constituencies = None
 parties = None
 results = None
 
-print_option_screen()
-option = input()
+option = 0
 
-match int(option): 
-    case 1: # Show Constituencies
-        # Create the list if it doesn't exist, then start over
-        constituencies = load_list_if_empty(constituencies)
+while option != 9:
 
-        if not constituencies:
-            pass
+    print_option_screen()
+    option = input()
 
-        print_constituency_table(constituencies, 'Constituency', 'Electorals', 20, 10)
-    case 2: # Show Parties
-        parties = load_list_if_empty(parties)
+    match int(option): 
+        case 1: # Show Constituencies
+            # Create the list if it doesn't exist, then start over
+            constituencies = load_list_if_empty(constituencies)
 
-        if not parties:
-            pass
+            if not constituencies:
+                pass
 
-        print_parties_table(parties, 'List', 'Party', 6, 26)
-    case 3: # Show Result
-        results = load_results_if_empty(results)
+            print_constituency_table(constituencies, 'Constituency', 'Electorals', 20, 10)
+        case 2: # Show Parties
+            parties = load_list_if_empty(parties)
 
-        if not results:
+            if not parties:
+                pass
+
+            print_parties_table(parties, 'List', 'Party', 6, 26)
+        case 3: # Show Result
+            results = load_results_if_empty(results)
+
+            if not results:
+                pass
+            
+            collection = create_collection(constituencies, parties, results)
+            collection_table(constituencies, parties, results)
+        case _:
             pass
         
-        print(results)
-    case 9: # Quit
-        pass
-    case _:
-        pass
 

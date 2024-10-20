@@ -116,7 +116,7 @@ def is_equivalence_relation(defined_set, relation_on_set):
 
 # Problem 3
 def composite_relations(relation1, relation2):
-    return #TODO Implement
+    return True
 
 # Problem 4a)
 def aces_in_relation_a(A):

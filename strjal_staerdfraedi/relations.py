@@ -1,6 +1,15 @@
 # T-117-STR1 Discrete Mathematics I
 # Template for Individual assignment 5
 
+def elements_are_the_same(elements):
+    """Takes in a list/tuple and return true if all elements are the same"""
+    elements_set = set(elements)
+    if len(elements_set) == 1:
+        return True
+    else:
+        return False
+
+
 # Problem 1a)
 def is_reflexive(defined_set, relation_on_set):
     # Create an empty set to hold what elements hold the same values
@@ -8,7 +17,8 @@ def is_reflexive(defined_set, relation_on_set):
 
     # Loop over the element and if they hold the same value then i add that value to the pairs set
     for element in relation_on_set:
-        if element[0] == element[1]:
+        """ if element[0] == element[1]: """
+        if elements_are_the_same(element):
             pairs.add(element[0])
 
     # if the defined set and relation set are the same that means that the relation_on_set holds all values of the defined set
@@ -42,7 +52,8 @@ def is_symmetric(relation_on_set):
     for element in relation_on_set:
 
         # if the values are the same, I skip
-        if element[0] == element[1]:
+        """ if element[0] == element[1]: """
+        if elements_are_the_same(element):
             continue
 
         # If last value is empty, it means that we just finished 2 symmetries(or this is the first element)
@@ -69,42 +80,26 @@ def is_symmetric(relation_on_set):
 
         
 
-
+""" 
 print(is_symmetric([(1, 1), (1, 3), (2, 2), (2, 3), (3, 3), (4, 4)])) #         False
 print(is_symmetric([('Alice','Bob'),('Bob','Alice')])) #                        True
 print(is_symmetric([(1, 2), (2, 1), (2, 3), (3, 2), (1, 3), (3, 1)])) #         True
 print(is_symmetric([(1, 2), (2, 1), (3, 3), (4, 4), (1, 3)])) #                 False
-
+ """
 # Problem 1c)
 def is_antisymmetric(relation_on_set):
-    # I create a variable to hold the last value
-    last_value = None
-
-    # Loop through all elements
+    elements_that_have_shown = []
     for element in relation_on_set:
+        element_sorted = sorted([str(value) for value in element])
+        if element_sorted in elements_that_have_shown:
+            return False
+        else:
+            elements_that_have_shown.append(element_sorted)
 
-        # if the values are the same, I skip
-        if element[0] == element[1]:
-            continue
+    return True
 
-        # If last value is empty, it means that we just finished 2 symmetries(or this is the first element)
-        # Therefore, I update the last element and then skip to the next element
-        if not last_value:
-            last_value = element
-            continue
-
-        # Now we have made sure that the element does not hold 2 of the same values, and that the last_value is not empty
-        # If the reverse of the element is not the same as the last value, It means that the relation_on_set is not symmetric
-        element_reversed = list(element)[::-1]
-        last_value_list = list(last_value)
-        if not (element_reversed == last_value_list):
-            return True
-        
-        last_value = None
-
-    # We need to know if there is a value at the end that has not gone through, if the last_value is empty,
-    # it means that we didn't have a value in the end that didn't go through the check. And then i return accordingly
-    return False
+print(is_antisymmetric([(1, 1), (1, 3), (2, 2), (2, 3), (3, 3), (4, 4)])) # True
+print(is_antisymmetric([('Alice','Bob'),('Bob','Alice')])) #                False
 
 # Problem 1d)
 def is_transitive(relation_on_set):

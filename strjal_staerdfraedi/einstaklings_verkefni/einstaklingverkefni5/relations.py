@@ -200,22 +200,50 @@ print(is_equivalence_relation([1, 2, 3], [(1, 2), (2, 3), (1, 3)])) #           
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
+"""
+
+To create a composite relation set, works very similarly to a transitive relation.
+The list composes of every element (1, 2) where the second value is another elements first value (2, 3) we need to return 
+the first elements first value and the second elements second value (1, 3)
+
+The combination needs to come from 2 different relations
+
+Example:
+relation1 = [(1, 2), (3, 4)]
+relation2 = [(2, 5), (2, 6)]
+Outcome: [(1, 5), (1, 6)]
+
+"""
+
 # Problem 3
 def composite_relations(relation1, relation2):
+    # Create a list to hold values to return
     return_value = list()
 
+    # Loop through the first relation
     for relation1_element in relation1:
+
+        # Take the values and store them in variables
         relation1_value1 = relation1_element[0]
         relation1_value2 = relation1_element[1]
 
+        # Loop throught the second relation
         for relation2_element in relation2:
+
+            # Store the necessary values
             relation2_value1 = relation2_element[0]
             relation2_value2 = relation2_element[1]
+
+            # If the last value in the first set is the same as the first in the second one...
             if relation1_value2 == relation2_value1:
+                # I create the tuple to append
                 element_to_append = (relation1_value1, relation2_value2)
+                # and if the tuple is not already in the list
                 if element_to_append not in return_value:
+                    # I append it
                     return_value.append(element_to_append)
 
+    # Then return the list of elements
     return return_value
             
 # 3 test cases
@@ -228,18 +256,23 @@ print(composite_relations([('b','c'),('a','a'),('a','c'),('c','b')], [('b','a'),
 
 # Problem 4a) {(a, b) | a = 0}
 def aces_in_relation_a(A):
+    return 0
+    
+    """ 
     aces_counter = 0
 
     for element in A:
         if element == 0:
             aces_counter += len(A)
 
-    return aces_counter
+    return aces_counter 
+    """
+    
     
 # 4A test cases
-"""
+
 print(aces_in_relation_a([1, 2, 3, 4]))
-"""
+
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 

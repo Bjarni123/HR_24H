@@ -1,4 +1,4 @@
-list1 = [1, 2, 3, 4]
-set1 = set([1, 2, 3, 4])
+tuple1 = (1, 2, 3)
+tuple2 = (3, 2, 1)
 
-print(set(list1) == set1)
+print(tuple1[::-1] == tuple2)

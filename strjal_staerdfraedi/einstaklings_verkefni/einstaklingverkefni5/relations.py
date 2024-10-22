@@ -253,9 +253,34 @@ print(composite_relations([('b','c'),('a','a'),('a','c'),('c','b')], [('b','a'),
 """
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
+"""
+
+I have in mind that the fastest and easiest way to solve these problems is to 
+create a double for loop to check if if the elements meet the criteria
+
+I just wanted to optimise my code as much as possible, I hope this won't be a problem
+
+When using the test cases that I made, I noticed that this way the code runs a lot faster 
+rather than if I would loop throught all the elements and calculate the values if the length was long
+
+
+I tried to explain my thought process as thoroughly as possible
+
+"""
+# ---------------------------------------------------------------------------------------------------------------------------------------
+
+
+"""
+
+Here the input is {1, 2, 3,..., n} and therfore a can never be 0 so the amount of 1's in the list is always zero,
+
+But if that is not enough, I made some code below it that counts the list if the list is {0, 1, 2,..., n - 1}
+
+"""
 
 # Problem 4a) {(a, b) | a = 0}
 def aces_in_relation_a(A):
+    # Answer is always 0 so I return that
     return 0
     
     """ 
@@ -273,37 +298,177 @@ def aces_in_relation_a(A):
 
 print(aces_in_relation_a([1, 2, 3, 4]))
 
-
 # ---------------------------------------------------------------------------------------------------------------------------------------
+
+"""
+If we create a table, there is a diagonal line that goes all the way down but does not work on the smallest value of a
+
+              b
+     | 1 | 2 | 3 | 4 | 5 |
+    -|---|---|---|---|---|  
+    1| 0 | 0 | 0 | 0 | 0 |
+    ----------------------
+    2| 1 | 0 | 0 | 0 | 0 |
+a   ----------------------
+    3| 0 | 1 | 0 | 0 | 0 |
+    ----------------------
+    4| 0 | 0 | 1 | 0 | 0 |
+    ----------------------
+    5| 0 | 0 | 0 | 1 | 0 |
+
+therefore, we can create an algorithm to find the amount of 1s, it is the length of the array - 1
+
+"""
 
 # Problem 4b) {(a, b) | a = b + 1}
 def aces_in_relation_b(A):
+    # Take the length
     len_A = len(A)
+    # And return the length - 1
     return (len_A - 1)
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
+"""
+
+If we draw it up as a table again, we can see that the amount of 1s in every line is the same as the value of a
+
+              b
+     | 1 | 2 | 3 | 4 | 5 |
+    -|---|---|---|---|---|  
+    1| 1 | 0 | 0 | 0 | 0 |
+    ----------------------
+    2| 1 | 1 | 0 | 0 | 0 |
+a   ----------------------
+    3| 1 | 1 | 1 | 0 | 0 |
+    ----------------------
+    4| 1 | 1 | 1 | 1 | 0 |
+    ----------------------
+    5| 1 | 1 | 1 | 1 | 1 |
+
+So we can return the value as the sum of all the values in A
+
+"""
+
 # Problem 4c) {(a, b) | a ≥ b}
 def aces_in_relation_c(A):
+    # I return the sum of all the elements
+    return(sum(A))
+
+    """ 
     the_sum = 0
     for add_to_sum in range(1, len(A) + 1):
         the_sum += add_to_sum
 
     return the_sum
+    """
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
+"""
+
+To do this problem, I started by shrinking the sample down, and make it into {(a, b) | a + b = 10} and then draw up the table
+
+              b
+     | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+    -|---|---|---|---|---|---|---|---|---|----|  
+    1| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0  |
+    -------------------------------------------
+    2| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0  |
+a   -------------------------------------------
+    3| 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0  |
+    -------------------------------------------
+    4| 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0  |
+    -------------------------------------------
+    5| 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0  |
+    -------------------------------------------
+    6| 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0  |
+    -------------------------------------------
+    7| 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0  |
+    -------------------------------------------
+    8| 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  |
+    -------------------------------------------
+    9| 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  |
+    -------------------------------------------
+   10| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  |
+
+Now we can see that the first value of 1 comes when the length is 5(or hald of the value we are looking for, 10 / 2 = 5). so if the length is smaller than 5, we just return 0
+
+               b
+     | 1 | 2 | 3 | 4 | 5 |
+    -|---|---|---|---|---|
+    1| 0 | 0 | 0 | 0 | 0 |
+    ----------------------
+    2| 0 | 0 | 0 | 0 | 0 |
+a   ----------------------
+    3| 0 | 0 | 0 | 0 | 0 |
+    ----------------------
+    4| 0 | 0 | 0 | 0 | 0 |
+    ----------------------
+    5| 0 | 0 | 0 | 0 | 1 |
+
+    
+every 1 that I add to the length after that, 2 is added to the number of 1s up until the sum that we're looking for and minus 1 on that, (10 - 1 = 9)
+
+                 b
+     | 1 | 2 | 3 | 4 | 5 | 6 |
+    -|---|---|---|---|---|---|
+    1| 0 | 0 | 0 | 0 | 0 | 0 |
+    --------------------------
+    2| 0 | 0 | 0 | 0 | 0 | 0 |
+a   --------------------------
+    3| 0 | 0 | 0 | 0 | 0 | 0 |
+    --------------------------
+    4| 0 | 0 | 0 | 0 | 0 | 1 |
+    --------------------------
+    5| 0 | 0 | 0 | 0 | 1 | 0 |
+    --------------------------
+    6| 0 | 0 | 0 | 1 | 0 | 0 |
+
+
+                 b
+     | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+    -|---|---|---|---|---|---|---|
+    1| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+    ------------------------------
+    2| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+a   ------------------------------
+    3| 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+    ------------------------------
+    4| 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+    ------------------------------
+    5| 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+    ------------------------------
+    6| 0 | 0 | 0 | 1 | 0 | 0 | 0 |
+    ------------------------------
+    7| 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+
+
+Now we just swap the values and make it into code to calculate it
+
+swap 5 for 500
+and 9 for 999
+
+"""
 # Problem 4d) {(a, b) | a + b = 1000}
 def aces_in_relation_d(A):
+    # Note down the length of the array
     len_A = len(A)
 
+    # if length is not sufficient, we return 0
     if len_A < 500:
         return 0
     else:
         a_plus_b = 1000
-        highest_possible_aces = a_plus_b - 1 # change a_plus_b if a + b should be something else 
-        possibly_wrong_return_value = 1 + ((len_A - 500) * 2)
-        return min(possibly_wrong_return_value, highest_possible_aces)
+
+        # calculate the maximum number of 1s we can have
+        highest_possible_aces = a_plus_b - 1 # change a_plus_b if a + b should be something else
+
+        # calculate how many 1s are in it
+        possible_return_value = 1 + ((len_A - 500) * 2)
+
+        # and the return the minimum of the 2 incase the length of the set is equal or greater than the sum
+        return min(possible_return_value, highest_possible_aces)
 
 # 4d test cases
 """     
@@ -312,24 +477,133 @@ print(aces_in_relation_d([x for x in range(1, 1683)]))
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
+"""
+
+Here the same principle as in 4d is used to calulate find the formula for this problem
+
+where {(a, b) | a + b >= 11}
+
+                            b
+     | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |  11 |
+    -|---|---|---|---|---|---|---|---|---|----|-----|
+    1| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1  |  1  |
+    ------------------------------------------------|
+    2| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1  |  1  |
+a   ------------------------------------------------|
+    3| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1  |  1  |
+    ------------------------------------------------|
+    4| 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1  |  1  |
+    ------------------------------------------------|
+    5| 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1  |  1  |
+    ------------------------------------------------|
+    6| 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |
+    ------------------------------------------------|
+    7| 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |
+    ------------------------------------------------|
+    8| 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |
+    ------------------------------------------------|
+    9| 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |
+    ------------------------------------------------|
+   10| 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |
+    ------------------------------------------------|
+   11| 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |
+
+We can see that the first 1 doesn't appear until the length of 6((length // 2) + 1) and then 3 1s appear.
+
+                 b
+     | 1 | 2 | 3 | 4 | 5 | 6 |
+    -|---|---|---|---|---|---|
+    1| 0 | 0 | 0 | 0 | 0 | 0 |
+    --------------------------
+    2| 0 | 0 | 0 | 0 | 0 | 0 |
+a   --------------------------
+    3| 0 | 0 | 0 | 0 | 0 | 0 |
+    --------------------------
+    4| 0 | 0 | 0 | 0 | 0 | 0 |
+    --------------------------
+    5| 0 | 0 | 0 | 0 | 0 | 1 |
+    --------------------------
+    6| 0 | 0 | 0 | 0 | 1 | 1 |
+
+We have that value as a_1 and create the following pyramid
+
+a_1 = 3
+            7
+a_2 = 10        4
+            11
+a_3 = 21        4           The values afterwards is a_n - a_(n-1)
+            15
+a_4 = 36        4
+            19
+a_5 = 55
+
+With this we can create the formula:
+a_n = a_(n-1) + 3 + 4 x (n - 1)
+
+However this only work up to the value we are looking for minus 1(11 - 1 = 10)
+
+
+                            b
+     | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |  11 |  12 |
+    -|---|---|---|---|---|---|---|---|---|----|-----|-----|
+    1| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+    2| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1  |  1  |  1  |
+a   ------------------------------------------------------|
+    3| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+    4| 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+    5| 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+    6| 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+    7| 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+    8| 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+    9| 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+   10| 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+   11| 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |  1  |
+    ------------------------------------------------------|
+   12| 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1  |  1  |  1  |
+
+After that the difference in what we add is 2 instead of 4
+
+Now we just have to swap the values (11 -> 1001 and 6 -> 501) and put this into code
+
+"""
+
 # Problem 4e) {(a, b) | a + b ≥ 1001}
 def aces_in_relation_e(A):
+    # Note down the length of it
     len_A = len(A)
 
+    # if the length is not sufficient we return 0
     if len_A <= 500:
         return 0
     else:
-        # The total sum of a_n = a_n-1 + 3 + 4 x n-1
+        # The total sum of a_n = a_(n-1) + 3 + 4 x n-1
+
+        # Create the necessary variables
         n = len_A - 500
         plus = 4
         add_to_sum = 3
         sum_of_a = 3
+
+        # Loop through the list
         for x in range(1, n):
+            # Add to the sum
             add_to_sum += plus
-            if x >= 499:
+            # if needed like showcased above, we change what the interval for what how much we should add
+            if x == 499:
                 plus = 2
+            # add it to the sum
             sum_of_a += add_to_sum
 
+        # And the return it
         return sum_of_a
 
 # 4E test cases

@@ -12,9 +12,11 @@ The second function, average_of_list, takes a list of numbers as a parameter and
 the average of all the numbers in the list.
 The third function, triple_values, takes a list of numbers as a parameter and replaces or
 changes each value within the list so that each number value is 3 times as big.
+
 # FUNCTION get_input_list HERE
 # FUNCTION average_of_list HERE
 # FUNCTION triple_values HERE
+
 number_of_inputs = int(input("How many numbers will you input? "))
 input_list = get_input_list(number_of_inputs)
 if input_list == None:
@@ -25,7 +27,10 @@ average = average_of_list(input_list)
 print("The average of the values is: ", average)
 triple_values(input_list)
 print("Now the list is: ", input_list)
+
+
 # Example input/output 1:
+
 How many numbers will you input? 4
 Please enter the next number: 2
 Please enter the next number: 4
@@ -35,6 +40,7 @@ The list: [2, 4, 5, 8]
 The average of the values is: 4.75
 Now the list is: [6, 12, 15, 24]
 # Example input/output 2:
+
 How many numbers will you input? 0
 Not valid!
 Implement all three functions, get_input_list, average_of_list and triple_values.
@@ -73,6 +79,10 @@ What id to look up (q to quit)? 7
 The name for 7 is Elsa
 What id to look up (q to quit)? q
 Quitting...
+
+
+
+
 Building a class
 The class TickCounter has a constructor (__init__ function) and three functions, tick,
 get_count and reset. The function tick can be called as many times as the user wants.

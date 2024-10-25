@@ -14,8 +14,10 @@ Things i wasn't sure about:
 """
 # Constants ----------------------------------------------------------------------------------------------------------------------------
 
-FILES_LOCATION = '/src/' 
-# FILES_LOCATION = './Forritun1/skilaverkefni/skilaverkefni4/src/'
+import pathlib
+main_py_dir = (pathlib.Path(__file__).parent.resolve())
+
+FILES_LOCATION = f'{main_py_dir}/src/' 
 
 # Classes ------------------------------------------------------------------------------------------------------------------------------
 

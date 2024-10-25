@@ -12,7 +12,7 @@ sync msg:
     set -euo pipefail
     git add .
     git commit -m '{{msg}}'
-    git pul origin main
+    git pull origin main
     git push origin main
 
 push msg:

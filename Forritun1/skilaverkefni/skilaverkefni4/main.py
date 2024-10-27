@@ -266,7 +266,7 @@ def main():
                 # Create the list if it doesn't exist, then start over
                 constituencies = load_list_if_empty(constituencies)
 
-                # If it is successfull, then print the table
+                # If it is successful, then print the table
                 if constituencies:
                     print_constituency_table(constituencies, 'Constituency', 'Electorals', 20, 10)
             

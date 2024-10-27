@@ -1,4 +1,4 @@
-dir := "./Forritun1/skilaverkefni/skilaverkefni4"
+dir := "./Forritun1/skilaverkefni/skilaverkefni5/"
 
 run *args:
     #!/bin/bash

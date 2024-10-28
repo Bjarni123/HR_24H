@@ -1,0 +1,11 @@
+Það þarf að importa card í deck skjalið
+required constant er NUMBER_OF_CARDS í main1.py setja það sem self.NUMBER_OF_CARDS í __init__
+Ekki nota type til þess að vita hvort rank er tala að str, inn á Kattis er notað '2' sem input og ef þið eruð með type til þess að sjá hvort þetta er int eða str, þá failast þetta. Ég notaði Try/except
+
+er eina sem má vera self, deck? eða má gera önnur self var
+mun __str__ á deck alltaf vera þegar deck er fullur, eða er hægt að kalla á hann þegar það er búið að deala?
+
+
+Eru þessi failed test cases að því að það á alltaf að vera bil þegar maður prenta út hand
+
+Það er eitthver villa með að fá þetta á rétta format, Í debugging hints er alltaf bil(fremst) þegar maður prentar hands/deck/hands. Er ekki viss hvaða

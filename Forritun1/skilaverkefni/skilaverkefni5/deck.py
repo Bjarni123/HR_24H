@@ -1,20 +1,47 @@
+import random
+
+from card import Card
+
 class Deck:
     
     def __init__(self) -> None:
+        # only deck is supposed to be public instance, maybe take this out
+        self.suits_list = ['H', 'S', 'D', 'C']
+        self.ranks_list = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
+
+        self.deck = []
+
+        for suit in self.suits_list:
+            for rank in self.ranks_list:
+                card = Card(rank, suit)
+                self.deck.append(card)
+
         # sort by suit (heart, spades, diamonds, club)  
-        self.deck = None
 
     def __str__(self) -> str:
-        # breakline after 13 instances, 
-        pass
+        return_string = ''
+        counter = 0
+        for card in self.deck:
+            return_string += str(card)
+            counter += 1
 
-    def shuffle(self) -> None:
+            if counter % 13 == 0 and card != self.deck[-1]:
+                return_string += '\n'
+            else:
+                return_string += ' '
+        
+        
+        return return_string
+
+    def shuffle(self):
         # Shuffle the deck
         # Not random.seed
-        return None
+        random.shuffle(self.deck)
     
-    def deal():
-        # Deal one card
-        return None
+    def deal(self):
+        """ card_dealt = self.deck[0]
+        self.deck = self.deck[1:]
+        return card_dealt """
+        return self.deck.pop(0)
     
     

@@ -29,12 +29,14 @@ def main():
     print(deck)
     print()
 
+
+    
     hand = Hand()
     for _ in range(Hand.NUMBER_OF_CARDS):
         hand.add_card(deck.deal())
     print(hand)
     print()
-
+   
     print(deck)
 
 

@@ -25,10 +25,10 @@ class Deck:
             return_string += str(card)
             counter += 1
 
-            if counter % 13 == 0 and card != self.deck[-1]:
-                return_string += '\n'
+            if counter % 13 == 0 and card not in [self.deck[-1]]:
+                return_string += '-\n'
             else:
-                return_string += ' '
+                return_string += '-'
         
         
         return return_string
@@ -39,9 +39,4 @@ class Deck:
         random.shuffle(self.deck)
     
     def deal(self):
-        """ card_dealt = self.deck[0]
-        self.deck = self.deck[1:]
-        return card_dealt """
         return self.deck.pop(0)
-    
-    

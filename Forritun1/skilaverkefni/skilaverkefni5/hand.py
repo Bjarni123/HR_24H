@@ -8,19 +8,11 @@ class Hand:
     def __str__(self) -> str:
         # Empty / all cards with space between
         if self.cards:
-
-            # Here a space is always before each card in hand
-            return_value = ''
-            for card in self.cards:
-                return_value += ' ' + str(card)
-
-            return return_value
-
-            # Here there are no spaces
-            # return " ".join([str(card) for card in self.cards])
+            return "-".join([str(card) for card in self.cards]) + "-"
         else:
             return "Empty"
 
     def add_card(self, card):
-        # add card to hand
-        self.cards.append(card)
+        # add card to hand if there are not 13 cards already
+        if len(self.cards) < self.NUMBER_OF_CARDS:
+            self.cards.append(card)

@@ -1,4 +1,4 @@
-Það þarf að importa card í deck skjalið
+Það-þarf að importa card í deck skjalið
 required constant er NUMBER_OF_CARDS í main1.py setja það sem self.NUMBER_OF_CARDS í __init__
 Ekki nota type til þess að vita hvort rank er tala að str, inn á Kattis er notað '2' sem input og ef þið eruð með type til þess að sjá hvort þetta er int eða str, þá failast þetta. Ég notaði Try/except
 
@@ -8,4 +8,25 @@ mun __str__ á deck alltaf vera þegar deck er fullur, eða er hægt að kalla �
 
 Eru þessi failed test cases að því að það á alltaf að vera bil þegar maður prenta út hand
 
-Það er eitthver villa með að fá þetta á rétta format, Í debugging hints er alltaf bil(fremst) þegar maður prentar hands/deck/hands. Er ekki viss hvaða
+
+
+Piazza thingy--------------------------------------------------------------------------------------------------------------------
+
+1. Don't use type in the Card class to check rank(don't know why it says to use it in Kattis). In Kattis there are test cases where the input of the rank is "2" but not 2
+2. When printing out the Card class, the rank is always supposed to take up 2 spaces.
+    Examples(- = " "):
+        -JS
+        -KD
+        -3C
+        10C (Here 10 already takes up 2 spaces to no additional space is needed)
+3. Dont add a card to Hand if the number of card in Hand is already 13 or over.
+4. When print out Hand or Deck, there is supposed to be a space at the end of each line infront of \n
+Examples:
+    Print Deck(- = " ")
+    -JS--KD--3C-10C--5C--5S--3H--8D--5H--7S--AS--9C--8H-
+    -4D-10D--9H--AD--7C--JC--KS--7H--3S-10H-10S--JH--8C-
+    -AH--KH--8S--JD--QC--2D--2C--QS--4S--6H--9S--6C--9D-
+    -KC--QH--4C--6S--7D--5D--2S--2H--AC--6D--3D--4H--QD-
+
+    Print Hand(- = " ")
+    -JS--KD--3C-10C--5C--5S--3H--8D--5H--7S--AS--9C--8H-

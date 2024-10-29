@@ -2,26 +2,21 @@ import random
 
 class Card:
     def __init__(self, rank, suit) -> None:
-        self.face_to_rank_dir = {'J': 11, 'Q': 12, 'K': 13, 'A': 14}
-        self.rank_to_face_dir = {rank: face for face, rank in self.face_to_rank_dir.items()}
+        self._face_to_rank_dir = {'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+        self._rank_to_face_dir = {rank: face for face, rank in self._face_to_rank_dir.items()}
         
         try:
             self.rank = int(rank)
         except:
-            self.rank = self.face_to_rank_dir[rank]
-        """ 
-        if type(rank) == str:
-            self.rank = self.face_to_rank_dir[rank]
-        else:
-            self.rank = int(rank)
-        """
+            self.rank = self._face_to_rank_dir[rank]
+        
         self.suit = suit
 
     def __str__(self) -> str:
         if self.rank <= 10:
             return f'{str(self.rank).rjust(2)}{self.suit.ljust(1)}'
         else:
-            rank_num = self.rank_to_face_dir[self.rank]
+            rank_num = self._rank_to_face_dir[self.rank]
 
             return f'{str(rank_num).rjust(2)}{self.suit.ljust(1)}'
 
@@ -50,8 +45,8 @@ class Deck:
             return_string += str(card)
             counter += 1
 
-            if counter % 13 == 0 and card != self.deck[-1]:
-                return_string += '\n'
+            if counter % 13 == 0 and card not in [self.deck[-1]]:
+                return_string += ' \n'
             else:
                 return_string += ' '
         
@@ -64,9 +59,6 @@ class Deck:
         random.shuffle(self.deck)
     
     def deal(self):
-        """ card_dealt = self.deck[0]
-        self.deck = self.deck[1:]
-        return card_dealt """
         return self.deck.pop(0)
     
     
@@ -87,10 +79,11 @@ class Hand:
 
             return return_value """
 
-            return " ".join([str(card) for card in self.cards])
+            return " ".join([str(card) for card in self.cards]) + " "
         else:
             return "Empty"
 
     def add_card(self, card):
-        # add card to hand
-        self.cards.append(card)
+        # add card to hand if there are not 13 cards already
+        if len(self.cards) < 13:
+            self.cards.append(card)

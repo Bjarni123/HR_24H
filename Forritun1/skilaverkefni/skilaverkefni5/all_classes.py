@@ -19,11 +19,11 @@ class Card:
 
     def __str__(self) -> str:
         if self.rank <= 10:
-            return f'{self.rank}{self.suit}'
+            return f'{str(self.rank).rjust(2)}{self.suit.ljust(1)}'
         else:
             rank_num = self.rank_to_face_dir[self.rank]
 
-            return f'{rank_num}{self.suit}'
+            return f'{str(rank_num).rjust(2)}{self.suit.ljust(1)}'
 
 
 
@@ -81,13 +81,13 @@ class Hand:
     def __str__(self) -> str:
         # Empty / all cards with space between
         if self.cards:
-            return_value = ''
+            """ return_value = ''
             for card in self.cards:
                 return_value += ' ' + str(card)
 
-            return return_value
+            return return_value """
 
-            # return " ".join([str(card) for card in self.cards])
+            return " ".join([str(card) for card in self.cards])
         else:
             return "Empty"
 

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "just": "^0.1.8",
+    "rust-just": "^1.36.0"
+  }
+}

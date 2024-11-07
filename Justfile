@@ -1,6 +1,6 @@
-dir := "./Forritun1/skilaverkefni/skilaverkefni5/"
+# dir := "./Forritun1/aefingadaemi/lokaprof/"
 
-# dir := "./Forritun1/" # path for testing.py
+dir := "./Forritun1/" # path for testing.py
 
 run *args:
     #!/bin/bash

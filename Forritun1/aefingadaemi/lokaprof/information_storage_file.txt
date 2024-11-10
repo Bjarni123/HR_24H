@@ -1,0 +1,5 @@
+length 0.0
+width 0.0
+height 0.0
+mass 5.0
+volume 0.0
